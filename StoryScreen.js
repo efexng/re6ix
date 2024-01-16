@@ -87,7 +87,7 @@ const StoryScreen = () => {
   >
        {/* User details */}
        <View style={storyStyle.userDetails}>
-      <TouchableOpacity onPress={() => navigation.navigate('UserProfile')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Update')}>
         <FontAwesome5 name="user-circle" size={40} color="#8B4513" style={storyStyle.userBoxIcon} />
       </TouchableOpacity>
       <View style={storyStyle.userInfo}>

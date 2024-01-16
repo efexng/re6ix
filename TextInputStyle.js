@@ -20,9 +20,8 @@ const TextInputStyle = StyleSheet.create({
   textInput: {
     alignSelf: 'center',
     padding: 10,
-    fontSize: 40,
-    flexWrap: 'wrap', // Enable text wrapping
-    maxLength: 1000, // Set maximum characters
+    marginTop: 100,
+    color: 'white',
   },
   colorPaintIcon: {
     position: 'absolute',
@@ -40,15 +39,17 @@ const TextInputStyle = StyleSheet.create({
     backgroundColor: 'grey',
     padding: 10,
     margin: 10,
+    left: 20,
     position: 'absolute',
-    top: '50%',  // Set the container's top position to 50% of the screen height
-    transform: [{ translateY: -20 }],  // Adjust translateY to center the container properly
+    top: '90%',  // Set the container's top position to 50% of the screen height
+    transform: [{ translateY: -50 }],  // Adjust translateY to center the container properly
     borderRadius: 20,
+    zIndex: 2,
   },  
   limitMessageText: {
     color: 'white',
     fontSize: 20,
-    fontStyle: 'bold',
+    zIndex: 2,
   },
 });
 

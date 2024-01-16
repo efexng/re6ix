@@ -10,6 +10,7 @@ import ChatScreen from './ChatScreen'; // Import the CallScreen component
 import ProfileScreen from './ProfileScreen'; // Import the CallScreen component
 import SettingScreen from './SettingScreen'; // Import the CallScreen component
 import TextInputScreen from './TextInputScreen'; // Import the new screen component
+import UpdateScreen from './UpdateScreen';
 
 
 class HomeScreen extends React.Component {
@@ -99,6 +100,15 @@ export default function App() {
         <Stack.Screen
           name="Text"
           component={TextInputScreen} // Ensure you are using the correct component reference
+          options={{
+            title: null,
+            headerLeft: null, // Hide the back button
+            headerTransparent: true, // Remove the line at the top
+          }}
+        />
+        <Stack.Screen
+          name="Update"
+          component={UpdateScreen} // Ensure you are using the correct component reference
           options={{
             title: null,
             headerLeft: null, // Hide the back button
