@@ -26,6 +26,7 @@ const callStyle = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 16,
+    color: '#8B4513',
   },
   recentCalls : {
     fontSize: 18,

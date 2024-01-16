@@ -9,6 +9,8 @@ import CallScreen from './CallScreen'; // Import the CallScreen component
 import ChatScreen from './ChatScreen'; // Import the CallScreen component
 import ProfileScreen from './ProfileScreen'; // Import the CallScreen component
 import SettingScreen from './SettingScreen'; // Import the CallScreen component
+import TextInputScreen from './TextInputScreen'; // Import the new screen component
+
 
 class HomeScreen extends React.Component {
   componentDidMount() {
@@ -88,6 +90,15 @@ export default function App() {
         <Stack.Screen
           name="Setting"
           component={SettingScreen}
+          options={{
+            title: null,
+            headerLeft: null, // Hide the back button
+            headerTransparent: true, // Remove the line at the top
+          }}
+        />
+        <Stack.Screen
+          name="Text"
+          component={TextInputScreen} // Ensure you are using the correct component reference
           options={{
             title: null,
             headerLeft: null, // Hide the back button

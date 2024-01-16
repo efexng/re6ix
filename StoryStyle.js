@@ -4,12 +4,20 @@ const storyStyle = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
   },
   text1 : {
     fontSize: 24,
     fontWeight: 'bold',
-    marginTop: 40,
+    color: '#8B4513',
+    textAlign: 'center',
+    marginTop: 30,
+  },
+  text2 : {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#8B4513',
+    marginTop: 30,
+    textAlign: 'center',
   },
   header: {
     flexDirection: 'row',
@@ -26,6 +34,7 @@ const storyStyle = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 16,
+    color: '#8B4513',
   },
   bottomIconsContainer: {
     flexDirection: 'row',
@@ -44,6 +53,7 @@ const storyStyle = StyleSheet.create({
     marginTop: 5, // Adjust the margin as needed
     fontSize: 12, // Adjust the font size as needed
     marginLeft: 25, // Adjust the margin as needed for spacing between icons
+    color: '#8B4513', // Change the color as needed
   },
   userDetails: {
     flexDirection: 'row',
@@ -60,10 +70,11 @@ const storyStyle = StyleSheet.create({
   userName: {
     fontSize: 18,
     fontWeight: 'bold',
+    color: '#8B4513', // Change the color as needed
   },
   date: {
     fontSize: 13,
-    color: 'gray',
+    color: '#8B4513', // Change the color as needed
   },
   actions: {
     flexDirection: 'row',
@@ -77,7 +88,7 @@ const storyStyle = StyleSheet.create({
     marginHorizontal: 16,
     marginVertical: 8,
     padding: 15,
-    backgroundColor: 'red', // Set the background color to red
+    backgroundColor: 'rgba(139, 69, 19, 0.42)',
     borderRadius: 16, // Add border radius for rounded corners
     width: 400,
   },
@@ -90,10 +101,10 @@ const storyStyle = StyleSheet.create({
     marginHorizontal: 16,
     marginVertical: 8,
     padding: 15,
-    backgroundColor: 'red', // Set the background color to red
+    backgroundColor: 'rgba(139, 69, 19, 0.42)',
     borderRadius: 16, // Add border radius for rounded corners
     width: 400,
-    marginTop: 50,
+    marginTop: 10,
   },
   mutedIcon: {
     marginRight: 8,
@@ -101,8 +112,10 @@ const storyStyle = StyleSheet.create({
   recentUpdates: {
     fontSize: 18,
     fontWeight: 'bold',
-    marginLeft: -250,
     marginBottom: 8,
+    color: '#8B4513',
+    marginTop: 10,
+    marginLeft: 20,
   },
   newBox: {
     flexDirection: 'row',
@@ -122,6 +135,7 @@ const storyStyle = StyleSheet.create({
   },
   date: {
     marginRight: 8,
+    color: '#8B4513', // Change the color as needed
   },  
 });
 
