@@ -6,18 +6,13 @@ const ChatStyle = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
   },
-  text1 : {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginTop: 40,
-  },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     width: '100%',
     paddingHorizontal: 16,
-    marginTop: 60, // Add a top margin to push the header down
+    marginTop: 60,
   },
   icon: {
     marginRight: 8,
@@ -26,8 +21,9 @@ const ChatStyle = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 16,
+    color: '#8B4513',
   },
-  recentCalls : {
+  recentCalls: {
     fontSize: 18,
     fontWeight: 'bold',
     marginTop: 10,
@@ -39,11 +35,11 @@ const ChatStyle = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: 16,
-    borderRadius: 8, // Add border radius for rounded corners
-    backgroundColor: 'red',
+    borderRadius: 8,
+    backgroundColor: 'rgba(139, 69, 19, 0.42)',
     width: 350,
-    paddingVertical: 5, // Adjust horizontal padding
-    paddingHorizontal: 15, // Adjust horizontal padding
+    paddingVertical: 5,
+    paddingHorizontal: 15,
   },
   boxItem: {
     flex: 1,
@@ -57,63 +53,72 @@ const ChatStyle = StyleSheet.create({
   separator: {
     width: 1,
     height: '100%',
-    backgroundColor: 'black', // Change the color as needed
+    backgroundColor: 'black',
     marginHorizontal: 3,
   },
   bottomIconsContainer: {
     flexDirection: 'row',
+    backgroundColor: 'rgba(245, 245, 245, 1.0)',
     alignItems: 'center',
     justifyContent: 'space-around',
     padding: 16,
+    paddingBottom: 30,
     borderTopWidth: 1,
-    borderColor: 'gray', // Change the color as needed
+    borderColor: 'gray',
   },
+  bottomIcon: {
+    marginHorizontal: 30,
+  },
+  bottomIconText: {
+    marginTop: 5,
+    fontSize: 12,
+    marginLeft: 25,
+  },
+  userBoxIcon: {
+    position: 'absolute',
+    left: -25, // Adjust the left position as needed
+    top: -25, // Adjust the top position as needed
+    borderColor: '#8B4513', // Border color
+  },
+
   userName: {
+    marginLeft: -82, // Adjust the left margin as needed
     fontSize: 18,
     fontWeight: 'bold',
   },
-  date: {
-    fontSize: 13,
-    color: 'gray',
+  
+  userMessage: {
+    marginLeft: -80, // Adjust the left margin as needed
+    fontSize: 14,
   },
-  bottomIconsContainer: {
-    position: 'absolute',
-    bottom: 0, // Adjust this value as needed
-    flexDirection: 'row',
-    backgroundColor: 'red', // Set background color to red
-    height: 95,
-    borderTopLeftRadius: 5, // Adjust the border radius as needed
-    borderTopRightRadius: 5, // Adjust the border radius as needed
-    paddingTop: 20, // Adjust the padding on top of the icons as needed
-    width: '100%',
-  },
-  bottomIcon: {
-    marginHorizontal: 30, // Adjust this value as needed for spacing between icons
-  },
-  bottomIconText: {
-    marginTop: 5, // Adjust the margin as needed
-    fontSize: 12, // Adjust the font size as needed
-    marginLeft: 25, // Adjust the margin as needed for spacing between icons
-  },
+  
   newBox: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    alignItems: 'center', // Align items vertically at the center
+    justifyContent: 'space-between', // Align items horizontally with space between
     marginHorizontal: 16,
     marginVertical: 8,
-    paddingHorizontal: 10, // Adjust horizontal padding
-    paddingVertical: 10,   // Add vertical padding
-    backgroundColor: 'red',
+    paddingHorizontal: 40,
+    paddingVertical: 20,
+    backgroundColor: 'rgba(139, 69, 19, 0.42)',
     borderRadius: 16,
-    width: 400,
+    width: 350, // Set the width to 350
     marginTop: 20,
+    position: 'relative', // Add position relative to the container
   },
+
   dateStarContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'flex-end', // Align items horizontally at the end
+    marginRight: -25, // Adjust the right margin as needed
   },
-  date: {
-    marginRight: 8,
-  },  
+
+  dateText: {
+    marginRight: 15, // Adjust the margin as needed
+    fontSize: 15,
+    color: 'gray',
+  },
 });
 
 export default ChatStyle;

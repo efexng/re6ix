@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import ProfileStyle from './ProfileStyle';
 import { useNavigation } from '@react-navigation/native';
@@ -12,6 +12,10 @@ const ProfileScreen = () => {
     <View style={ProfileStyle.header}></View>
     <Text style={ProfileStyle.title}>Profile</Text>
 
+    <ScrollView
+    contentContainerStyle={ProfileStyle.scrollContentContainer}
+    showsVerticalScrollIndicator={false}
+  >
    {/* Centered profile */}
    <View style={ProfileStyle.centeredProfile}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -29,6 +33,8 @@ const ProfileScreen = () => {
         </View>
       </View>
       
+
+
     <Text style={ProfileStyle.userName}>Efe Apoki</Text>
 
 
@@ -45,6 +51,7 @@ const ProfileScreen = () => {
         {/* Add your big box or any other content here */}
         <View style={ProfileStyle.bigBox}></View>
       </View>
+     </ScrollView>
 
    
 
@@ -53,27 +60,27 @@ const ProfileScreen = () => {
    {/* Bottom Icons */}
    <View style={ProfileStyle.bottomIconsContainer}>
         <TouchableOpacity onPress={() => navigation.navigate('Story')}>
-          <FontAwesome5 name="circle-notch" size={24} color="black" style={ProfileStyle.bottomIcon} />
+          <FontAwesome5 name="circle-notch" size={24} color="#8B4513" style={ProfileStyle.bottomIcon} />
           <Text style={ProfileStyle.bottomIconText}>Story</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => navigation.navigate('Call')}>
-          <FontAwesome5 name="phone-alt" size={24} color="black" style={ProfileStyle.bottomIcon} />
+          <FontAwesome5 name="phone-alt" size={24} color="#8B4513" style={ProfileStyle.bottomIcon} />
           <Text style={ProfileStyle.bottomIconText}>Calls</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
-          <FontAwesome5 name="comments" size={24} color="black" style={ProfileStyle.bottomIcon} />
+          <FontAwesome5 name="comments" size={24} color="#8B4513" style={ProfileStyle.bottomIcon} />
           <Text style={ProfileStyle.bottomIconText}>Chats</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-          <FontAwesome5 name="user" size={24} color="black" style={ProfileStyle.bottomIcon} />
+          <FontAwesome5 name="user" size={24} color="#8B4513" style={ProfileStyle.bottomIcon} />
           <Text style={ProfileStyle.bottomIconText}>Profile</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => navigation.navigate('Setting')}>
-          <FontAwesome5 name="cog" size={24} color="black" style={ProfileStyle.bottomIcon} />
+          <FontAwesome5 name="cog" size={24} color="#8B4513" style={ProfileStyle.bottomIcon} />
           <Text style={ProfileStyle.bottomIconText}>Settings</Text>
         </TouchableOpacity>
       </View>

@@ -31,8 +31,9 @@ const callStyle = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginTop: 10,
-    marginLeft: -300,
+    marginLeft: 20,
     marginBottom: 8,
+    color: '#8B4513',
   },
   boxContainer: {
     flexDirection: 'row',
@@ -40,7 +41,7 @@ const callStyle = StyleSheet.create({
     justifyContent: 'center',
     marginVertical: 16,
     borderRadius: 8, // Add border radius for rounded corners
-    backgroundColor: 'red',
+    backgroundColor: 'rgba(139, 69, 19, 0.42)', // SaddleBrown color with 42% opacity
     width: 250,
   },
   boxItem: {
@@ -56,7 +57,7 @@ const callStyle = StyleSheet.create({
   separator: {
     width: 1,
     height: '100%',
-    backgroundColor: 'black', // Change the color as needed
+    backgroundColor: '#8B4513', // SaddleBrown color with 42% opacity
     marginHorizontal: 16,
   },
   bottomIconsContainer: {
@@ -76,15 +77,14 @@ const callStyle = StyleSheet.create({
     color: 'gray',
   },
   bottomIconsContainer: {
-    position: 'absolute',
-    bottom: 0, // Adjust this value as needed
     flexDirection: 'row',
-    backgroundColor: 'red', // Set background color to red
-    height: 95,
-    borderTopLeftRadius: 5, // Adjust the border radius as needed
-    borderTopRightRadius: 5, // Adjust the border radius as needed
-    paddingTop: 20, // Adjust the padding on top of the icons as needed
-    width: '100%',
+    backgroundColor: 'rgba(245, 245, 245, 1.0)', // Smokewhite color with 30% opacity
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    padding: 16,
+    paddingBottom: 30,
+    borderTopWidth: 1,
+    borderColor: 'gray',
   },
   bottomIcon: {
     marginHorizontal: 30, // Adjust this value as needed for spacing between icons
@@ -99,13 +99,13 @@ const callStyle = StyleSheet.create({
     justifyContent: 'space-between',
     marginHorizontal: 16,
     marginVertical: 8,
-    paddingHorizontal: 10, // Adjust horizontal padding
-    paddingVertical: 10,   // Add vertical padding
-    backgroundColor: 'red',
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    backgroundColor: 'rgba(139, 69, 19, 0.42)',
     borderRadius: 16,
-    width: 400,
+    flex: 1, // Use flex to allow dynamic width
     marginTop: 20,
-  },
+  },  
   dateStarContainer: {
     flexDirection: 'row',
     alignItems: 'center',

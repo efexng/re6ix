@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 const SettingStyle = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#f5f5f5', // Smokewhite color
   },
   header: {
     flexDirection: 'row',
@@ -22,17 +22,17 @@ const SettingStyle = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 16,
     textAlign: 'center',  // Center the text
+    color: '#8B4513',
   },
   bottomIconsContainer: {
-    position: 'absolute',
-    bottom: 0, // Adjust this value as needed
     flexDirection: 'row',
-    backgroundColor: 'red', // Set background color to red
-    height: 95,
-    borderTopLeftRadius: 5, // Adjust the border radius as needed
-    borderTopRightRadius: 5, // Adjust the border radius as needed
-    paddingTop: 20, // Adjust the padding on top of the icons as needed
-    width: '100%',
+    backgroundColor: 'rgba(245, 245, 245, 1.0)', // Smokewhite color with 30% opacity
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    padding: 16,
+    paddingBottom: 30,
+    borderTopWidth: 1,
+    borderColor: 'gray',
   },
   bottomIcon: {
     marginHorizontal: 30, // Adjust this value as needed for spacing between icons
@@ -49,9 +49,10 @@ const SettingStyle = StyleSheet.create({
   },
   settingItemText: {
     fontSize: 18,
+    color: '#8B4513',
   },
   settingBox: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#fff',
     borderRadius: 10,
     marginVertical: 10,
     padding: 16,
@@ -60,12 +61,24 @@ const SettingStyle = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: '#8B4513',
   },
-  scrollContentContainer: {
-    paddingHorizontal: 16,
-    paddingBottom: 120, // Adjust this value based on your bottomIconsContainer height
-    // Set a max height for your content, change it as needed
-    maxHeight: 700, // Set a value based on your design
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    margin: 16,
+    paddingHorizontal: 8,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 8,
+  },
+  searchIcon: {
+    marginRight: 8,
+  },
+  searchBox: {
+    flex: 1,
+    height: 40,
+    color: '#8B4513',
   },
 });
 

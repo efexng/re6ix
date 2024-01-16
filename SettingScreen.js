@@ -1,12 +1,13 @@
 // ProfileScreen.js
-import React from 'react';
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import SettingStyle from './SettingStyle';
 import { useNavigation } from '@react-navigation/native';
 
-const ProfileScreen = () => {
+const SettingScreen = () => {
   const navigation = useNavigation();
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleSettingPress = (setting) => {
     // Handle press for each setting item
@@ -14,16 +15,28 @@ const ProfileScreen = () => {
   };
 
   return (
-    <View style={SettingStyle.container}>
-     <ScrollView
+<View style={SettingStyle.container}>
+    {/* Search Box */}
+   
+       
+
+      <View style={SettingStyle.header}></View>
+      <Text style={SettingStyle.title}>Settings</Text>
+      <ScrollView
         style={SettingStyle.scrollContainer}
         contentContainerStyle={SettingStyle.scrollContentContainer}
         showsVerticalScrollIndicator={false} // Optionally hide the vertical scroll indicator
       >
-
-      <View style={SettingStyle.header}></View>
-      <Text style={SettingStyle.title}>Settings</Text>
-
+       {/* Search Box */}
+    <View style={SettingStyle.searchContainer}>
+      <FontAwesome5 name="search" size={20} color="#555" style={SettingStyle.searchIcon} />
+      <TextInput
+        style={SettingStyle.searchBox}
+        placeholder="Search settings..."
+        value={searchQuery}
+        onChangeText={(text) => setSearchQuery(text)}
+      />
+    </View>
          {/* Settings List */}
       <View style={SettingStyle.settingBox}>
         <Text style={SettingStyle.settingBoxTitle}>Account Settings</Text>
@@ -85,27 +98,27 @@ const ProfileScreen = () => {
       {/* Bottom Icons */}
       <View style={SettingStyle.bottomIconsContainer}>
         <TouchableOpacity onPress={() => navigation.navigate('Story')}>
-          <FontAwesome5 name="circle-notch" size={24} color="black" style={SettingStyle.bottomIcon} />
+          <FontAwesome5 name="circle-notch" size={24} color="#8B4513" style={SettingStyle.bottomIcon} />
           <Text style={SettingStyle.bottomIconText}>Story</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => navigation.navigate('Call')}>
-          <FontAwesome5 name="phone-alt" size={24} color="black" style={SettingStyle.bottomIcon} />
+          <FontAwesome5 name="phone-alt" size={24} color="#8B4513" style={SettingStyle.bottomIcon} />
           <Text style={SettingStyle.bottomIconText}>Calls</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
-          <FontAwesome5 name="comments" size={24} color="black" style={SettingStyle.bottomIcon} />
+          <FontAwesome5 name="comments" size={24} color="#8B4513" style={SettingStyle.bottomIcon} />
           <Text style={SettingStyle.bottomIconText}>Chats</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-          <FontAwesome5 name="user" size={24} color="black" style={SettingStyle.bottomIcon} />
+          <FontAwesome5 name="user" size={24} color="#8B4513" style={SettingStyle.bottomIcon} />
           <Text style={SettingStyle.bottomIconText}>Profile</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => navigation.navigate('Setting')}>
-          <FontAwesome5 name="cog" size={24} color="black" style={SettingStyle.bottomIcon} />
+          <FontAwesome5 name="cog" size={24} color="#8B4513" style={SettingStyle.bottomIcon} />
           <Text style={SettingStyle.bottomIconText}>Settings</Text>
         </TouchableOpacity>
       </View>
@@ -113,4 +126,4 @@ const ProfileScreen = () => {
   );
 };
 
-export default ProfileScreen;
+export default SettingScreen;

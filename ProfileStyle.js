@@ -22,17 +22,17 @@ const ProfileStyle = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 16,
     textAlign: 'center',  // Center the text
+    color: '#8B4513',
   },
   bottomIconsContainer: {
-    position: 'absolute',
-    bottom: 0, // Adjust this value as needed
     flexDirection: 'row',
-    backgroundColor: 'red', // Set background color to red
-    height: 95,
-    borderTopLeftRadius: 5, // Adjust the border radius as needed
-    borderTopRightRadius: 5, // Adjust the border radius as needed
-    paddingTop: 20, // Adjust the padding on top of the icons as needed
-    width: '100%',
+    backgroundColor: 'rgba(245, 245, 245, 1.0)', // Smokewhite color with 30% opacity
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    padding: 16,
+    paddingBottom: 30,
+    borderTopWidth: 1,
+    borderColor: 'gray',
   },
   bottomIcon: {
     marginHorizontal: 30, // Adjust this value as needed for spacing between icons
@@ -61,7 +61,7 @@ const ProfileStyle = StyleSheet.create({
     color: 'white', // Set text color to white
   },
   aboutBox: {
-    backgroundColor: 'blue', // Set background color to blue
+    backgroundColor: 'rgba(139, 69, 19, 0.42)', // SaddleBrown color with 42% opacity
     paddingHorizontal: 40,
     paddingVertical: 20,
     borderRadius: 8,
@@ -79,7 +79,7 @@ const ProfileStyle = StyleSheet.create({
     color: 'white', // Set text color to white
   },
   phoneBox: {
-    backgroundColor: 'red', // Set background color to blue
+    backgroundColor: 'rgba(139, 69, 19, 0.42)', // SaddleBrown color with 42% opacity
     paddingHorizontal: 10,
     paddingVertical: 20,
     borderRadius: 8,
@@ -90,6 +90,7 @@ const ProfileStyle = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 10,
     marginLeft: 20,
+    color: '#8B4513',
   },
   favoritesContainer: {
     marginTop: 20,
@@ -99,11 +100,7 @@ const ProfileStyle = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
-  },
-  bigBox: {
-    backgroundColor: 'blue',
-    height: 200, // Set the desired height for the big box
-    borderRadius: 8,
+    color: '#8B4513',
   },
   savesContainer: {
     marginTop: 20,
@@ -113,9 +110,10 @@ const ProfileStyle = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: '#8B4513',
   },
   bigBox: {
-    backgroundColor: 'blue',
+    backgroundColor: 'rgba(139, 69, 19, 0.42)', // SaddleBrown color with 42% opacity
     height: 200, // Set the desired height for the big box
     borderRadius: 8,
   },
