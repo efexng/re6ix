@@ -59,7 +59,7 @@ const ConversationScreen = () => {
     const handleOptionPress = async (option) => {
         try {
             let result;
-    
+
             if (option === 'camera') {
                 result = await ImagePicker.launchCameraAsync({
                     // Camera options
@@ -69,7 +69,7 @@ const ConversationScreen = () => {
                     // Image library options
                 });
             }
-    
+
             if (!result.canceled) {
                 // Handle the image selected from the camera or library
                 const newMessage = {
@@ -78,38 +78,37 @@ const ConversationScreen = () => {
                     sender: 'user',
                     image: result.assets[0].uri,
                 };
-    
+
                 setMessages([...messages, newMessage]);
             }
-    
+
         } catch (error) {
             console.error("Error picking image:", error);
         } finally {
             // Close the modal after handling the option
-            setModalVisible(false);
             setSelectedImage(null); // Clear the selected image to avoid duplicate entries
         }
     };
-    
+
 
     const handleSendPress = () => {
         if (replyText.trim() === '' && !selectedImage) {
             // Do not send empty messages
             return;
         }
-    
+
         const newMessage = {
             id: messages.length + 1,
             text: replyText,
             sender: 'user',
             image: selectedImage,
         };
-    
+
         setMessages([...messages, newMessage]);
         setReplyText('');
         setSelectedImage(null);
     };
-    
+
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -145,19 +144,19 @@ const ConversationScreen = () => {
                         <FontAwesome5 name="arrow-left" size={24} color="black" style={ConversationStyle.leftArrow} />
                     </TouchableOpacity>
 
-                   {/* Conversation Box */}
-<View style={ConversationStyle.conversationBox}>
-    <FlatList
-        data={messages}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-            <View style={item.sender === 'user' ? ConversationStyle.userMessage : ConversationStyle.otherMessage}>
-                <Text style={ConversationStyle.messageText}>{item.text}</Text>
-                {item.image && <Image source={{ uri: item.image }} style={ConversationStyle.messageImage} />}
-            </View>
-        )}
-    />
-</View>
+                    {/* Conversation Box */}
+                    <View style={ConversationStyle.conversationBox}>
+                        <FlatList
+                            data={messages}
+                            keyExtractor={(item) => item.id.toString()}
+                            renderItem={({ item }) => (
+                                <View style={item.sender === 'user' ? ConversationStyle.userMessage : ConversationStyle.otherMessage}>
+                                    <Text style={ConversationStyle.messageText}>{item.text}</Text>
+                                    {item.image && <Image source={{ uri: item.image }} style={ConversationStyle.messageImage} />}
+                                </View>
+                            )}
+                        />
+                    </View>
 
 
                     {/* Reply Box */}
@@ -188,20 +187,20 @@ const ConversationScreen = () => {
                         >
                             <View style={ConversationStyle.modalContainer}>
                                 <View style={ConversationStyle.modalContent}>
-                                <TouchableOpacity onPress={() => handleOptionPress('camera')}>
-                                <Icon style={ConversationStyle.modalIcon} name="camera" size={16} color="white" />
-                            <Text style={ConversationStyle.modalText}>
-                                <Text style={ConversationStyle.modalText}>Camera</Text>
-                            </Text>
-                            </TouchableOpacity>
+                                    <TouchableOpacity onPress={() => handleOptionPress('camera')}>
+                                        <Icon style={ConversationStyle.modalIcon} name="camera" size={16} color="white" />
+                                        <Text style={ConversationStyle.modalText}>
+                                            <Text style={ConversationStyle.modalText}>Camera</Text>
+                                        </Text>
+                                    </TouchableOpacity>
 
-                                <View style={ConversationStyle.divider}></View>
-                                <TouchableOpacity onPress={() => handleOptionPress('library')}>
-                                <Icon style={ConversationStyle.modalIcon} name="image" size={16} color="white" />
-                                <Text style={ConversationStyle.modalText}>
-                                    Library
-                                </Text>
-                                </TouchableOpacity>
+                                    <View style={ConversationStyle.divider}></View>
+                                    <TouchableOpacity onPress={() => handleOptionPress('library')}>
+                                        <Icon style={ConversationStyle.modalIcon} name="image" size={16} color="white" />
+                                        <Text style={ConversationStyle.modalText}>
+                                            Library
+                                        </Text>
+                                    </TouchableOpacity>
 
                                 </View>
                                 <View style={ConversationStyle.modalCancelContent}>
