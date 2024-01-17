@@ -9,7 +9,7 @@ const UpdateStyle = StyleSheet.create({
   postItem: {
     flex: 1,
     top: 105,
-    borderRadius: 10, 
+    borderRadius: 10,
     position: 'absolute',
     width: '100%',
     height: '80%',
@@ -21,7 +21,7 @@ const UpdateStyle = StyleSheet.create({
     color: 'white',
     textAlign: 'center', // Add this property to center the text horizontally
     justifyContent: 'center', // Add this property to center the text vertically
-  },  
+  },
   replyBox: {
     position: 'absolute',
     bottom: Platform.OS === 'ios' ? 25 : 0, // Adjust the bottom position based on the platform
@@ -33,6 +33,13 @@ const UpdateStyle = StyleSheet.create({
     borderRadius: 10,
     width: '82%',
     marginLeft: '8%',
+  },
+  replyTextInput: {
+    flex: 1,
+    marginRight: 10,
+  },
+  sendIcon: {
+    // Add any styles for the send icon if needed
   },
   swipeableContainer: {
     flexDirection: 'row',
