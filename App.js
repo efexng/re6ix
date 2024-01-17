@@ -11,13 +11,14 @@ import ProfileScreen from './ProfileScreen'; // Import the CallScreen component
 import SettingScreen from './SettingScreen'; // Import the CallScreen component
 import TextInputScreen from './TextInputScreen'; // Import the new screen component
 import UpdateScreen from './UpdateScreen';
+import ConversationScreen from './CoversationScreen';
 
 
 class HomeScreen extends React.Component {
   componentDidMount() {
     // Delayed navigation to ChatScreen after 5 seconds
     this.delayedNavigation = setTimeout(() => {
-      this.props.navigation.navigate('Setting');
+      this.props.navigation.navigate('Chat');
     }, 1000);
   }
 
@@ -109,6 +110,15 @@ export default function App() {
         <Stack.Screen
           name="Update"
           component={UpdateScreen} // Ensure you are using the correct component reference
+          options={{
+            title: null,
+            headerLeft: null, // Hide the back button
+            headerTransparent: true, // Remove the line at the top
+          }}
+        />
+        <Stack.Screen
+          name="Conversation"
+          component={ConversationScreen} // Ensure you are using the correct component reference
           options={{
             title: null,
             headerLeft: null, // Hide the back button

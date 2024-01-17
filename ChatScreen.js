@@ -6,10 +6,10 @@ import { useNavigation } from '@react-navigation/native';
 
 
 const ChatEntry = ({ message, name, onPress }) => (
-  <View style={ChatStyle.newBox}>
-    <TouchableOpacity onPress={onPress}>
+  <TouchableOpacity style={ChatStyle.newBox} onPress={onPress}>
+    <View>
       <FontAwesome5 name="user-circle" size={40} color="#8B4513" style={ChatStyle.userBoxIcon} />
-    </TouchableOpacity>
+    </View>
     <View style={ChatStyle.userInfo}>
       <Text style={ChatStyle.userName}>{name}</Text>
       <Text style={ChatStyle.userMessage}>{message}</Text>
@@ -20,12 +20,15 @@ const ChatEntry = ({ message, name, onPress }) => (
         <FontAwesome5 name="star" size={24} color="#8B4513" style={ChatStyle.starIcon} />
       </View>
     </View>
-  </View>
+  </TouchableOpacity>
 );
 
 const ChatScreen = () => {
   const navigation = useNavigation();
-
+  const handleChatEntryPress = (userName) => {
+    // Navigate to the Conversation screen, passing the userName as a parameter
+    navigation.navigate('Conversation', { userName });
+  };
   return (
     <View style={ChatStyle.container}>
       <View style={ChatStyle.header}>
@@ -65,7 +68,7 @@ const ChatScreen = () => {
             key={`ChatEntry${index}`}
             name="John Doe"
             message="Hello World"
-            onPress={() => navigation.navigate('UserProfile')}
+            onPress={() => handleChatEntryPress("John Doe")}
           />
         ))}
       </ScrollView>

@@ -39,7 +39,7 @@ const StoryScreen = () => {
         quality: 1,
       });
   
-      if (!result.cancelled) {
+      if (!result.canceled) {
         // Handle the selected image (result.uri)
         console.log('Image URI:', result.uri);
       }
@@ -59,7 +59,7 @@ const StoryScreen = () => {
         quality: 1,
       });
 
-      if (!result.cancelled) {
+      if (!result.canceled) {
         // Handle the selected image (result.uri)
         console.log('Image URI:', result.uri);
       }

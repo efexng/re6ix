@@ -59,7 +59,7 @@ const TextInputScreen = () => {
     navigation.navigate('Update', { post: postObject });
   };
 
-  const calculateFontSize = () => {
+   const calculateFontSize = () => {
     const baseFontSize = 40;
     const minFontSize = 20;
 
