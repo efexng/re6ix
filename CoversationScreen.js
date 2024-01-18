@@ -80,13 +80,13 @@ const ConversationScreen = () => {
                 };
 
                 setMessages([...messages, newMessage]);
+                setModalVisible(false); // Close the modal only if the operation is successful
             }
 
         } catch (error) {
             console.error("Error picking image:", error);
         } finally {
-            // Close the modal after handling the option
-            setSelectedImage(null); // Clear the selected image to avoid duplicate entries
+
         }
     };
 
@@ -182,7 +182,6 @@ const ConversationScreen = () => {
                             transparent={true}
                             visible={modalVisible}
                             onRequestClose={() => {
-                                setModalVisible(false);
                             }}
                         >
                             <View style={ConversationStyle.modalContainer}>
@@ -203,11 +202,12 @@ const ConversationScreen = () => {
                                     </TouchableOpacity>
 
                                 </View>
-                                <View style={ConversationStyle.modalCancelContent}>
-                                    <TouchableOpacity onPress={() => setModalVisible(false)}>
+                                <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
+                                    <View style={ConversationStyle.modalCancelContent}>
                                         <Text style={ConversationStyle.modalCancel}>Cancel</Text>
-                                    </TouchableOpacity>
-                                </View>
+                                    </View>
+                                </TouchableWithoutFeedback>
+
                             </View>
                         </Modal>
 
