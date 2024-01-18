@@ -5,23 +5,19 @@ import callStyle from './CallStyle';
 import { useNavigation } from '@react-navigation/native';
 
 const CallEntry = ({ name, onPress }) => (
-  <View style={callStyle.newBox}>
-    <TouchableOpacity onPress={onPress}>
-      <FontAwesome5 name="user-circle" size={40} color="#8B4513" style={callStyle.userBoxIcon} />
-    </TouchableOpacity>
-    <View style={callStyle.userInfo}>
+  <TouchableOpacity onPress={onPress} style={callStyle.newBox}>
+    <FontAwesome5 name="user-circle" size={40} color="#8B4513" style={callStyle.userBoxIcon} />
+    <View style={callStyle.dateStarContainer}>
       <Text style={callStyle.userName}>{name}</Text>
     </View>
-    <View style={callStyle.newBoxInfo}>
-      <View style={callStyle.userInfo}>
-        <View style={callStyle.dateStarContainer}>
-          <Text style={callStyle.date}>Today at 12:26pm</Text>
-          <FontAwesome5 name="star" size={24} color="#8B4513" style={callStyle.starIcon} />
-          <FontAwesome5 name="exclamation-circle" size={24} color="#8B4513" style={callStyle.bottomIcon} />
-        </View>
-      </View>
+    <View style={callStyle.dateContainer}>
+    <Text style={callStyle.date}>Today at 12:26pm</Text>
+       </View>
+    <View style={callStyle.dateStarContainer}>
+      <FontAwesome5 name="star" size={24} color="#8B4513" style={callStyle.starIcon} />
+      <FontAwesome5 name="exclamation-circle" size={24} color="#8B4513" style={callStyle.exclamation} />
     </View>
-  </View>
+  </TouchableOpacity>
 );
 
 

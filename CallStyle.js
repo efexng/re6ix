@@ -104,16 +104,25 @@ const callStyle = StyleSheet.create({
     paddingVertical: 10,
     backgroundColor: 'rgba(139, 69, 19, 0.42)',
     borderRadius: 16,
-    flex: 1, // Use flex to allow dynamic width
     marginTop: 20,
   },  
   dateStarContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
+    marginLeft: 8, // Adjust the margin to bring the date closer to the star
+  },
+  dateContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: 25, // Adjust the margin to bring the date closer to the star
   },
   date: {
-    marginRight: 8,
+    marginRight: 18,
   },  
+  starIcon: {
+    marginRight: 4, // Adjust the margin to bring the star closer to the exclamation
+  },
 });
 
 export default callStyle;
