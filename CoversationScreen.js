@@ -6,6 +6,7 @@ import ConversationStyle from './ConversationStyle';
 import Icon from 'react-native-vector-icons/FontAwesome'; // Import the appropriate icon library
 import * as ImagePicker from 'expo-image-picker';
 import { BlurView } from 'expo-blur';
+import { Video } from 'expo-av';
 
 
 
@@ -63,30 +64,32 @@ const ConversationScreen = () => {
             if (option === 'camera') {
                 result = await ImagePicker.launchCameraAsync({
                     // Camera options
+                    mediaTypes: ImagePicker.MediaTypeOptions.All,
                 });
             } else if (option === 'library') {
                 result = await ImagePicker.launchImageLibraryAsync({
                     // Image library options
+                    mediaTypes: ImagePicker.MediaTypeOptions.All,
                 });
             }
 
             if (!result.canceled) {
-                // Handle the image selected from the camera or library
+                // Handle the image or video selected from the camera or library
                 const newMessage = {
                     id: messages.length + 1,
                     text: '', // You can add text if needed
                     sender: 'user',
-                    image: result.assets[0].uri,
+                    type: result.type, // 'image' or 'video'
+                    media: result.uri,
                 };
 
                 setMessages([...messages, newMessage]);
                 setModalVisible(false); // Close the modal only if the operation is successful
             }
-
         } catch (error) {
-            console.error("Error picking image:", error);
+            console.error("Error picking image or video:", error);
         } finally {
-
+            // Additional cleanup or actions if needed
         }
     };
 
@@ -152,7 +155,18 @@ const ConversationScreen = () => {
                             renderItem={({ item }) => (
                                 <View style={item.sender === 'user' ? ConversationStyle.userMessage : ConversationStyle.otherMessage}>
                                     <Text style={ConversationStyle.messageText}>{item.text}</Text>
-                                    {item.image && <Image source={{ uri: item.image }} style={ConversationStyle.messageImage} />}
+                                    {item.type === 'image' && <Image source={{ uri: item.media }} style={ConversationStyle.messageImage} />}
+                                    {item.type === 'video' && (
+                                        <Video
+                                            source={{ uri: item.media }}
+                                            style={ConversationStyle.messageVideo}
+                                            resizeMode="cover"
+                                            shouldPlay
+                                            isLooping
+                                            useNativeControls // This enables native controls for the video player
+
+                                        />
+                                    )}
                                 </View>
                             )}
                         />
