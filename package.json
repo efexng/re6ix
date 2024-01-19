@@ -39,7 +39,9 @@
     "expo-blur": "~12.4.1",
     "expo-av": "~13.4.1",
     "expo-media-library": "~15.4.1",
-    "expo-file-system": "~15.4.5"
+    "expo-file-system": "~15.4.5",
+    "react-native-web": "~0.19.6",
+    "@expo/webpack-config": "^19.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

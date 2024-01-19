@@ -98,7 +98,7 @@ const ConversationScreen = () => {
         if (replyText.trim() === '' && !selectedImage) {
             // Do not send empty messages
             return;
-        }
+    }
 
         const newMessage = {
             id: messages.length + 1,
@@ -164,7 +164,6 @@ const ConversationScreen = () => {
                                             shouldPlay
                                             isLooping
                                             useNativeControls // This enables native controls for the video player
-
                                         />
                                     )}
                                 </View>
