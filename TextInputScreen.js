@@ -112,6 +112,8 @@ const TextInputScreen = () => {
         contentContainerStyle={{ flexGrow: 1 }}
         style={{ backgroundColor: colors[currentColorIndex] }}
         scrollEnabled={false} // Set scrollEnabled to false
+        keyboardShouldPersistTaps="handled" // Allow taps to be handled while keyboard is open
+
       >
         <View style={TextInputStyle.container}>
           {/* Close (X) icon */}
@@ -138,14 +140,6 @@ const TextInputScreen = () => {
             <FontAwesome5 name={fonts[currentFontIndex]} size={24} color="black" />
           </TouchableOpacity>
 
-          {/* Send icon */}
-          <TouchableOpacity
-      onPress={handleSendAction}
-      style={[TextInputStyle.sendButton, { opacity: isSendDisabled ? 0.5 : 1 }]}
-      disabled={isSendDisabled}
-    >
-      <FontAwesome5 name="paper-plane" size={24} color="black" />
-    </TouchableOpacity>
 
           {showLimitMessage && (
             <View style={TextInputStyle.limitMessageContainer}>
@@ -169,6 +163,17 @@ const TextInputScreen = () => {
           />
         </View>
       </ScrollView>
+        {/* Send icon */}
+        <View style={TextInputStyle.sendButtonContainer}>
+        {/* Send icon */}
+        <TouchableOpacity
+          onPress={handleSendAction}
+          style={[TextInputStyle.sendButton, { opacity: isSendDisabled ? 0.5 : 1 }]}
+          disabled={isSendDisabled}
+        >
+          <FontAwesome5 name="paper-plane" size={30} color="blue" />
+        </TouchableOpacity>
+      </View>
     </KeyboardAvoidingView>
   );
 };

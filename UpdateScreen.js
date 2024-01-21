@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, TextInput, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard, } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import Icon from 'react-native-vector-icons/FontAwesome'; // Import the appropriate icon library
 import { useNavigation } from '@react-navigation/native';
@@ -10,6 +10,7 @@ const UpdateScreen = ({ route }) => {
   const navigation = useNavigation();
   const [posts, setPosts] = useState([]);
   const [replyText, setReplyText] = useState('');
+
 
   useEffect(() => {
     loadPosts();
@@ -120,27 +121,8 @@ const UpdateScreen = ({ route }) => {
                 <Text style={[UpdateStyle.postText, getFontStyle(post)]}>{post.text}</Text>
               </TouchableOpacity>
             ))}
-          </View>
-
-                    <View style={UpdateStyle.replyBox}>
-            <TextInput
-                style={UpdateStyle.replyTextInput}
-                placeholder="Type your reply..."
-                value={replyText}
-                onChangeText={handleReplyTextChange}
-                multiline={true}
-            />
-            <TouchableOpacity onPress={handleSendPress}>
-                <Icon name="send" size={25} color="blue" style={UpdateStyle.sendIcon} />
-            </TouchableOpacity>
-            </View>
-
-
-          <TouchableOpacity style={UpdateStyle.likeIcon}>
-            <FontAwesome5 name="heart" size={24} color="red" />
-          </TouchableOpacity>
-
-          <TouchableOpacity
+            
+            <TouchableOpacity
             style={UpdateStyle.backButton}
             onPress={() => navigation.navigate('Story')}
           >
@@ -148,8 +130,29 @@ const UpdateScreen = ({ route }) => {
           </TouchableOpacity>
 
           <TouchableOpacity style={UpdateStyle.moreOptions} onPress={handleEllipsisClick}>
-            <FontAwesome5 name="ellipsis-h" size={24} color="black" />
+            <FontAwesome5 name="ellipsis-v" size={24} color="black" />
           </TouchableOpacity>
+
+          </View>
+
+            {/* Reply Box */}
+            <View style={UpdateStyle.replyContainer}>
+            <TouchableOpacity style={UpdateStyle.likeIcon}>
+                             <FontAwesome5 name="heart" size={24} color="red" />
+                            </TouchableOpacity>
+                        <View style={UpdateStyle.replyBox}>
+                            <TextInput
+                                style={UpdateStyle.replyTextInput}
+                                placeholder="Type your reply..."
+                                value={replyText}
+                                onChangeText={handleReplyTextChange}
+                                multiline={true}
+                            />
+                        </View>
+                        <TouchableOpacity onPress={handleSendPress} disabled={replyText.trim() === ''}>
+                            <Icon name="send" size={25} color={replyText.trim() === '' ? 'gray' : 'blue'} style={UpdateStyle.sendIcon} />
+                        </TouchableOpacity>
+         </View>
         </View>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>

@@ -10,12 +10,19 @@ const TextInputStyle = StyleSheet.create({
     top: 60,
     left: 20,
     zIndex: 2,
+    width: 30,
+    height:30,
+  },
+  sendButtonContainer: {
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    paddingVertical: 10, // Change to vertical padding
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   sendButton: {
-    position: 'absolute',
-    top: 60,
-    right: 20,
-    zIndex: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+    left: 160, // Change
   },
   textInput: {
     alignSelf: 'center',
@@ -26,14 +33,18 @@ const TextInputStyle = StyleSheet.create({
   colorPaintIcon: {
     position: 'absolute',
     top: 60,
-    right: 120,
+    right: 80,
     zIndex: 2,
+    width: 30,
+    height:30,
   },
   fontTypeIcon: {
     position: 'absolute',
     top: 60,
-    right: 80,
+    right: 20,
     zIndex: 2,
+    width: 30,
+    height:30,
   },
   limitMessageContainer: {
     backgroundColor: 'grey',
