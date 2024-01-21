@@ -61,8 +61,8 @@ const ConversationStyle = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 10,
-    width: '82%',
-    marginLeft: '8%',
+    width: '90%', // Adjust the width to match the conversation box
+    marginLeft: '5%', // Adjust the marginLeft as needed
   },
   replyTextInput: {
     flex: 1,

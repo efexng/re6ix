@@ -18,6 +18,8 @@ const ConversationScreen = () => {
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
     const inputRef = useRef(null);
     const [selectedImage, setSelectedImage] = useState(null);
+    const flatListRef = useRef(null);
+
 
     useEffect(() => {
         const keyboardDidShowListener = Keyboard.addListener(
@@ -98,7 +100,7 @@ const ConversationScreen = () => {
         if (replyText.trim() === '' && !selectedImage) {
             // Do not send empty messages
             return;
-    }
+        }
 
         const newMessage = {
             id: messages.length + 1,
@@ -150,6 +152,7 @@ const ConversationScreen = () => {
                     {/* Conversation Box */}
                     <View style={ConversationStyle.conversationBox}>
                         <FlatList
+                            ref={flatListRef}
                             data={messages}
                             keyExtractor={(item) => item.id.toString()}
                             renderItem={({ item }) => (
@@ -163,12 +166,14 @@ const ConversationScreen = () => {
                                             resizeMode="cover"
                                             shouldPlay
                                             isLooping
-                                            useNativeControls // This enables native controls for the video player
+                                            useNativeControls
                                         />
                                     )}
                                 </View>
                             )}
+                            onContentSizeChange={() => flatListRef.current?.scrollToEnd({ animated: true })}
                         />
+
                     </View>
 
 
