@@ -21,6 +21,7 @@ const ConversationScreen = () => {
     const flatListRef = useRef(null);
 
 
+
     useEffect(() => {
         const keyboardDidShowListener = Keyboard.addListener(
             'keyboardDidShow',
@@ -123,31 +124,28 @@ const ConversationScreen = () => {
             >
 
                 <View style={ConversationStyle.container}>
-                    {/* Top Left: Back icon and unread messages count */}
-                    <Text style={ConversationStyle.topLeftText}>Chats</Text>
 
                     {/* Top Center: User Circle and Name */}
                     <View style={ConversationStyle.topCenterContainer}>
-                        <FontAwesome5 name="user-circle" size={40} color="#8B4513" style={ConversationStyle.userIcon} />
-                        <Text style={ConversationStyle.userName}>John Doe</Text>
-                    </View>
-
-                    {/* Top Right: Video and Phone Icons */}
-                    <View style={ConversationStyle.topRightContainer}>
-                        <TouchableOpacity onPress={() => console.log('Video call pressed')}>
-                            <FontAwesome5 name="video" size={24} color="#8B4513" style={ConversationStyle.topRightIcon} />
+                        <TouchableOpacity
+                            style={ConversationStyle.backButton}
+                            onPress={() => navigation.navigate('Chat')}
+                        >
+                            <FontAwesome5 name="arrow-left" size={24} color="black" style={ConversationStyle.leftArrow} />
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() => console.log('Phone call pressed')}>
-                            <FontAwesome5 name="phone" size={24} color="#8B4513" style={ConversationStyle.topRightIcon} />
-                        </TouchableOpacity>
+                        <View style={ConversationStyle.middleContainer}>
+                            <FontAwesome5 name="user-circle" size={40} color="#8B4513" style={ConversationStyle.userIcon} />
+                            <Text style={ConversationStyle.userName}>John Doe</Text>
+                        </View>
+                        <View style={ConversationStyle.rightContainer}>
+                            <TouchableOpacity onPress={() => console.log('Video call pressed')}>
+                                <FontAwesome5 name="video" size={24} color="#8B4513" style={ConversationStyle.Video} />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => console.log('Phone call pressed')}>
+                                <FontAwesome5 name="phone" size={24} color="#8B4513" style={ConversationStyle.Phone} />
+                            </TouchableOpacity>
+                        </View>
                     </View>
-
-                    <TouchableOpacity
-                        style={ConversationStyle.backButton}
-                        onPress={() => navigation.navigate('Chat')}
-                    >
-                        <FontAwesome5 name="arrow-left" size={24} color="black" style={ConversationStyle.leftArrow} />
-                    </TouchableOpacity>
 
                     {/* Conversation Box */}
                     <View style={ConversationStyle.conversationBox}>
@@ -178,57 +176,56 @@ const ConversationScreen = () => {
 
 
                     {/* Reply Box */}
-                    <View style={ConversationStyle.replyBox}>
-                        <TextInput
-                            style={ConversationStyle.replyTextInput}
-                            placeholder="Type your reply..."
-                            value={replyText}
-                            onChangeText={handleReplyTextChange}
-                            multiline={true}
-                        />
-                        <TouchableOpacity onPress={handleSendPress} disabled={replyText.trim() === ''}>
-                            <Icon name="send" size={25} color={replyText.trim() === '' ? 'gray' : 'blue'} style={ConversationStyle.sendIcon} />
-                        </TouchableOpacity>
+                    <View style={ConversationStyle.replyContainer}>
                         <TouchableOpacity style={ConversationStyle.moreOptions} onPress={handleEllipsisClick}>
                             <FontAwesome5 name="ellipsis-h" size={24} color="black" />
                         </TouchableOpacity>
+                        <View style={ConversationStyle.replyBox}>
+                            <TextInput
+                                style={ConversationStyle.replyTextInput}
+                                placeholder="Type your reply..."
+                                value={replyText}
+                                onChangeText={handleReplyTextChange}
+                                multiline={true}
+                            />
+                            <Modal
+                                animationType="slide"
+                                transparent={true}
+                                visible={modalVisible}
+                                onRequestClose={() => {
+                                }}
+                            >
+                                <View style={ConversationStyle.modalContainer}>
+                                    <View style={ConversationStyle.modalContent}>
+                                        <TouchableOpacity onPress={() => handleOptionPress('camera')}>
+                                            <Icon style={ConversationStyle.modalIcon} name="camera" size={16} color="white" />
+                                            <Text style={ConversationStyle.modalText}>
+                                                <Text style={ConversationStyle.modalText}>Camera</Text>
+                                            </Text>
+                                        </TouchableOpacity>
 
+                                        <View style={ConversationStyle.divider}></View>
+                                        <TouchableOpacity onPress={() => handleOptionPress('library')}>
+                                            <Icon style={ConversationStyle.modalIcon} name="image" size={16} color="white" />
+                                            <Text style={ConversationStyle.modalText}>
+                                                Library
+                                            </Text>
+                                        </TouchableOpacity>
 
-
-                        <Modal
-                            animationType="slide"
-                            transparent={true}
-                            visible={modalVisible}
-                            onRequestClose={() => {
-                            }}
-                        >
-                            <View style={ConversationStyle.modalContainer}>
-                                <View style={ConversationStyle.modalContent}>
-                                    <TouchableOpacity onPress={() => handleOptionPress('camera')}>
-                                        <Icon style={ConversationStyle.modalIcon} name="camera" size={16} color="white" />
-                                        <Text style={ConversationStyle.modalText}>
-                                            <Text style={ConversationStyle.modalText}>Camera</Text>
-                                        </Text>
-                                    </TouchableOpacity>
-
-                                    <View style={ConversationStyle.divider}></View>
-                                    <TouchableOpacity onPress={() => handleOptionPress('library')}>
-                                        <Icon style={ConversationStyle.modalIcon} name="image" size={16} color="white" />
-                                        <Text style={ConversationStyle.modalText}>
-                                            Library
-                                        </Text>
-                                    </TouchableOpacity>
+                                    </View>
+                                    <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
+                                        <View style={ConversationStyle.modalCancelContent}>
+                                            <Text style={ConversationStyle.modalCancel}>Cancel</Text>
+                                        </View>
+                                    </TouchableWithoutFeedback>
 
                                 </View>
-                                <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
-                                    <View style={ConversationStyle.modalCancelContent}>
-                                        <Text style={ConversationStyle.modalCancel}>Cancel</Text>
-                                    </View>
-                                </TouchableWithoutFeedback>
+                            </Modal>
 
-                            </View>
-                        </Modal>
-
+                        </View>
+                        <TouchableOpacity onPress={handleSendPress} disabled={replyText.trim() === ''}>
+                            <Icon name="send" size={25} color={replyText.trim() === '' ? 'gray' : 'blue'} style={ConversationStyle.sendIcon} />
+                        </TouchableOpacity>
                     </View>
                 </View>
             </KeyboardAvoidingView>

@@ -3,164 +3,148 @@ import { StyleSheet } from 'react-native';
 const ConversationStyle = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
-  },
-  iconContainer: {
-    marginRight: 8, // Adjust spacing if needed
-  },
-  leftArrow: {
-    position: 'absolute',
-    top: 52,
-    marginLeft: 10,
-    marginTop: 16,
-  },
- topLeftText: {
-    position: 'absolute',
-    top: 52,
-    left: 0,
-    marginLeft: 50,
-    marginTop: 16,
-    fontSize: 20,
-    fontWeight: 'bold',
+    backgroundColor: '#ffffff',
   },
   topCenterContainer: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
+    flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 50,
+    justifyContent: 'space-between',
+    top: 40,
+    paddingHorizontal: 16,
+  },
+  middleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   userIcon: {
-    fontSize: 40,
-    color: '#8B4513',
+    marginRight: 10,
   },
   userName: {
-    marginTop: 5,
     fontSize: 16,
     fontWeight: 'bold',
     color: '#333333',
   },
-  topRightContainer: {
-    position: 'absolute',
-    flexDirection: 'row',
-    top: 52,
-    right: 0,
-    marginRight: 16,
-    marginTop: 16,
-  },
-  topRightIcon: {
-    marginRight: 16,
-  },
-  replyBox: {
-    position: 'absolute',
-    bottom: Platform.OS === 'ios' ? 25 : 0,
-    height: 50,
-    backgroundColor: 'whitesmoke',
-    paddingHorizontal: 16,
+  rightContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 10,
-    width: '90%', // Adjust the width to match the conversation box
-    marginLeft: '5%', // Adjust the marginLeft as needed
   },
-  replyTextInput: {
-    flex: 1,
+  Video: {
     marginRight: 10,
-    fontSize: 16,
+    // Add any other styles you need for the video icon
   },
-  sendIcon: {
-    marginRight: 5,
+  Phone: {
+    // Add any styles you need for the phone icon
+  },
+  leftArrow: {
+    fontSize: 24,
+    color: '#333333',
+  },
+  backButton: {
+    // Styles for your back button if needed
   },
   conversationBox: {
-    backgroundColor: 'red',
-    borderRadius: 10,
-    width: '90%', // Adjust the percentage based on your preference
-    height: '70%',
-    alignSelf: 'center',
-    marginTop: '30%', // Adjust the margin-top based on your preference
-  },  
+    flex: 1,
+    marginTop: 50,
+    backgroundColor: 'red'
+  },
   userMessage: {
     alignSelf: 'flex-end',
-    backgroundColor: '#ADD8E6', // Light blue for user messages
-    borderRadius: 8,
-    padding: 8,
-    margin: 8,
+    backgroundColor: '#7cc',
+    padding: 10,
+    borderRadius: 10,
+    marginVertical: 5,
     maxWidth: '70%',
   },
   otherMessage: {
     alignSelf: 'flex-start',
-    backgroundColor: '#E0E0E0', // Light gray for other messages
-    borderRadius: 8,
-    padding: 8,
-    margin: 8,
+    backgroundColor: '#eee',
+    padding: 10,
+    borderRadius: 10,
+    marginVertical: 5,
     maxWidth: '70%',
   },
   messageText: {
     fontSize: 16,
-    color: '#000',
+    color: '#333333',
   },
-  modalContainer: {
-    position: 'absolute',
-    bottom: 150,
-    left: 0,
-    right: 0,
+  messageImage: {
+    width: 200,
+    height: 200,
     borderRadius: 10,
-    padding: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
+    marginVertical: 5,
+  },
+  messageVideo: {
+    width: 200,
+    height: 200,
+    borderRadius: 10,
+    marginVertical: 5,
+  },
+  replyContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    backgroundColor: 'blue',
+    borderTopWidth: 1,
+    paddingHorizontal: 10,
+    paddingTop: 10,  // Remove padding from the top
+    paddingBottom: 35,  // Keep padding at the bottom
   },  
-  modalContent: {
+  replyBox: {
+    flex: 1,
+    marginRight: 10,
+    maxHeight: 100,
+    borderRadius: 20,
+    overflow: 'hidden',
+    backgroundColor: '#ddd', // Set the background color to white or transparent
+    borderColor: 'white', // Set the border color to match the background
+    borderWidth: 1, // Set the border width to 1 to hide the border
+  },
+  replyTextInput: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    padding: 12,  // Adjust this value for top, right, bottom, and left padding
+    fontSize: 16,
+  },  
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    bottom: 20
+  },
+  modalContent: {
+    backgroundColor: '#fff',
     padding: 20,
-    borderRadius: 10,
-    width: '90%', // Adjust the percentage based on your preference
-    marginBottom: 30,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
+  },
+  modalIcon: {
+    marginRight: 10,
   },
   modalText: {
     fontSize: 16,
-    color: 'white',
-    marginBottom: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginLeft: 40, // Adjust the marginRight for space between icon and text
+    color: '#333333',
   },
-  modalIcon: {
-    fontSize: 20,
-    position: 'absolute',
-    marginRight: 60, // Adjust the marginRight for space between icon and text
+  divider: {
+    height: 1,
+    backgroundColor: '#ccc',
+    marginVertical: 10,
+  },
+  modalCancelContent: {
+    alignItems: 'center',
+    padding: 10,
   },
   modalCancel: {
     fontSize: 16,
-    color: 'white',
-    textAlign: 'center',
+    color: '#ff0000',
   },
-  modalCancelContent: {
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
-    width: '90%', // Adjust the percentage based on your preference
-    height: '30%',
-    marginTop: 'auto',
-    marginBottom: 'auto',
-    borderRadius: 20,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+  moreOptions: {
+    marginRight: 10,
   },
-   divider: {
-    borderBottomWidth: 1,
-    borderBottomColor: 'white', // Choose the color of the border
-    marginVertical: 15, // Add vertical margin to create space between the text and the line
-},
-messageImage: {
-  width: 200, // Adjust the width as needed
-  height: 200, // Adjust the height as needed
-  borderRadius: 8, // Optional: Add border radius for a rounded look
-},
-messageVideo: {
-  width: 200, // Adjust the width as needed
-  height: 200, // Adjust the height as needed
-},
-
+  sendIcon: {
+    fontSize: 25,
+    color: 'black',
+  },
 });
 
 export default ConversationStyle;

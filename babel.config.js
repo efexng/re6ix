@@ -1,6 +1,2 @@
-module.exports = function(api) {
-  api.cache(true);
-  return {
-    presets: ['babel-preset-expo'],
-  };
-};
+export const presets = ['module:metro-react-native-babel-preset'];
+export const plugins = ['react-native-reanimated/plugin'];
