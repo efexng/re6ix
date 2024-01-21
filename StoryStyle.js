@@ -36,6 +36,43 @@ const storyStyle = StyleSheet.create({
     marginBottom: 16,
     color: '#8B4513',
   },
+  touchable: {
+    marginRight: 10, // Adjust spacing as needed
+  },
+  searchBox: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 1,
+    backgroundColor: '#fff',
+    flexDirection: 'row', // Align items horizontally
+    alignItems: 'center', // Center items vertically
+    paddingHorizontal: 20, // Add padding to the left and right
+    borderRadius: 15,
+  },
+  searchInput: {
+    borderWidth: 1,
+    borderColor: '#8B4513',
+    borderRadius: 15,
+    padding: 8,
+    marginVertical: 10,
+    flex: 1, 
+    backgroundColor: 'rgba(245, 245, 245, 1.0)', // Smokewhite color with 30% opacity
+    bottom: 10, // Optional: Add a bottom margin to push the search box down
+  },
+  cancelButton: {
+    padding: 10,
+    bottom: 10, // Optional: Add a bottom margin to push the search box down
+  },
+  searchicon: {
+    padding: 10,
+    bottom: 10, // Optional: Add a bottom margin to push the search box down
+  },
+  cancelButtonText: {
+    color: '#8B4513',
+    fontWeight: 'bold',
+  },
   bottomIconsContainer: {
     flexDirection: 'row',
     backgroundColor: 'rgba(245, 245, 245, 1.0)', // Smokewhite color with 30% opacity
@@ -63,6 +100,43 @@ const storyStyle = StyleSheet.create({
   },
   userIcon: {
     marginRight: 8,
+  },
+  userBoxImage: {
+    width: 50, // Set the desired width
+    height: 50, // Set the desired height
+    borderRadius: 50, // Optional: Add borderRadius for a circular image
+    marginRight: 5,
+  },
+  userBoxImageRecent: {
+    width: 50, // Set the desired width
+    height: 50, // Set the desired height
+    borderRadius: 50, // Optional: Add borderRadius for a circular image
+  },
+  scrollViewContent: {
+    flexGrow: 1,
+  },
+  userBoxImageRecentNames: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    alignItems: 'center',
+    marginTop: 5,
+    textAlign: 'center',
+    color: '#8B4513', // Change the color as needed
+  },
+  userBoxImageMuted: {
+    width: 50, // Set the desired width
+    height: 50, // Set the desired height
+    borderRadius: 50, // Optional: Add borderRadius for a circular image
+    opacity: 0.3,
+  },
+  userBoxImageMutedNames: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    alignItems: 'center',
+    marginTop: 5,
+    textAlign: 'center',
+    color: '#8B4513', // Change the color as needed
+    opacity: 0.3,
   },
   userInfo: {
     flex: 1,
@@ -137,6 +211,17 @@ const storyStyle = StyleSheet.create({
     marginRight: 8,
     color: '#8B4513', // Change the color as needed
   },  
+  modalContainer: {
+    backgroundColor: 'white',
+    padding: 20,
+    borderRadius: 10,
+  },
+  modalOption: {
+    fontSize: 18,
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+  },
 });
 
 export default storyStyle;

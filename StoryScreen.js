@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Image, TextInput, Keyboard } from 'react-native';
 import storyStyle from './StoryStyle';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import * as ImagePicker from 'expo-image-picker';
 
 
-const StoryEntry = ({ name, onPress }) => (
-  <View style={storyStyle.newBox}>
-              <TouchableOpacity onPress={() => navigation.navigate('UserProfile')}>
-                <FontAwesome5 name="user-circle" size={40} color="#8B4513" style={storyStyle.userBoxIcon} />
-              </TouchableOpacity>
-              <View style={storyStyle.userInfo}>
-        <Text style={storyStyle.userName}>John Doe</Text>
+const StoryEntry = ({ name, imageSource, navigation, onPress }) => (
+  <TouchableOpacity onPress={onPress}>
+    <View style={storyStyle.newBox}>
+    <Image source={imageSource} style={storyStyle.userBoxImage} />
+      <View style={storyStyle.userInfo}>
+        <Text style={storyStyle.userName}>{name}</Text>
       </View>
-        <View style={storyStyle.newBoxInfo}>
+      <View style={storyStyle.newBoxInfo}>
         <View style={storyStyle.userInfo}>
           <View style={storyStyle.dateStarContainer}>
             <Text style={storyStyle.date}>17h ago</Text>
@@ -22,11 +21,51 @@ const StoryEntry = ({ name, onPress }) => (
           </View>
         </View>
       </View>
-      </View>
+    </View>
+  </TouchableOpacity>
 );
+
 
 const StoryScreen = () => {
   const navigation = useNavigation();
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
+
+  const handleSearchPress = () => {
+    setIsSearchVisible(!isSearchVisible);
+  };
+
+  const handleCancelSearch = () => {
+    setIsSearchVisible(false);
+    setSearchQuery('');
+  };
+
+  
+
+  const users = [
+    { name: 'John Doe', imageSource: require('./img/user3.jpeg') },
+    { name: 'Jane Miller', imageSource: require('./img/user4.jpeg') },
+    { name: 'Alice Smith', imageSource: require('./img/user5.jpeg') },
+    { name: 'Bob Johnson', imageSource: require('./img/user6.jpeg') },
+    { name: 'Eva Davis', imageSource: require('./img/user7.jpeg') },
+    { name: 'Michael Brown', imageSource: require('./img/user8.jpeg') },
+    { name: 'Sophia Wilson', imageSource: require('./img/user9.jpeg') },
+    { name: 'Chris Miller', imageSource: require('./img/user10.jpeg') },
+    { name: 'Olivia Martinez', imageSource: require('./img/user11.jpeg') },
+    { name: 'David Taylor', imageSource: require('./img/user12.jpeg') },
+  ];
+  
+  
+
+  
+  // Filter the entries based on the exact search query match
+  // Filter the entries based on the exact search query match
+const filteredEntries = users.filter((user) =>
+searchQuery ? user.name.toLowerCase().includes(searchQuery.toLowerCase()) : true
+);
+
+  
 
   const handleCameraIconClick = async () => {
     const { status } = await ImagePicker.requestCameraPermissionsAsync(); // Request camera permissions
@@ -78,17 +117,41 @@ const StoryScreen = () => {
       <View style={storyStyle.header}>
         <FontAwesome5 name="users" size={24} color="#8B4513" style={storyStyle.icon} />
         <Text style={storyStyle.title}>Story</Text>
-        <FontAwesome5 name="search" size={24} color="#8B4513" style={storyStyle.icon} />
+        <TouchableOpacity onPress={handleSearchPress} style={storyStyle.touchable}>
+          <FontAwesome5 name="search" size={24} color="#8B4513" style={storyStyle.icon} />
+        </TouchableOpacity>
+        {isSearchVisible ? (
+      <>
+        <View style={storyStyle.searchBox}>
+          <FontAwesome5 name="search" size={24} color="#8B4513" style={storyStyle.searchicon} />
+          <TextInput
+            placeholder="Search..."
+            style={storyStyle.searchInput}
+            value={searchQuery}
+            onChangeText={(text) => setSearchQuery(text)}
+          />
+          <TouchableOpacity onPress={handleCancelSearch} style={storyStyle.cancelButton}>
+            <Text style={storyStyle.cancelButtonText}>Cancel</Text>
+          </TouchableOpacity>
+        </View>
+      </>
+    ) : null}
       </View>
       
       <ScrollView
     contentContainerStyle={storyStyle.scrollContentContainer}
     showsVerticalScrollIndicator={false}
+    onScroll={() => Keyboard.dismiss()} 
+
   >
        {/* User details */}
        <View style={storyStyle.userDetails}>
-      <TouchableOpacity onPress={() => navigation.navigate('Update')}>
-        <FontAwesome5 name="user-circle" size={40} color="#8B4513" style={storyStyle.userBoxIcon} />
+       <TouchableOpacity onPress={() => navigation.navigate('Update')}>
+        {/* Replace FontAwesome5 with Image */}
+        <Image
+          source={require('./img/user1.png')} // Provide the path to your image
+          style={storyStyle.userBoxImage} // Apply the specified style
+        />
       </TouchableOpacity>
       <View style={storyStyle.userInfo}>
         <Text style={storyStyle.userName}>John Doe</Text>
@@ -110,38 +173,83 @@ const StoryScreen = () => {
       
       {/* Box containing 5 user icons */}
       <View style={storyStyle.userBox}>
-        {[1, 2, 3, 4, 5].map((index) => (
-          <TouchableOpacity key={index} onPress={() => navigation.navigate('UserProfile')}>
-          <FontAwesome5 name="user-circle" size={40} color="#8B4513" style={storyStyle.userBoxIcon} />
-          </TouchableOpacity>
-        ))}
-      </View>
+  <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+    {[
+      { image: require('./img/user3.jpeg'), name: 'John ' },
+      { image: require('./img/user4.jpeg'), name: 'Jane ' },
+      { image: require('./img/user5.jpeg'), name: 'Alice ' },
+      { image: require('./img/user6.jpeg'), name: 'Bob ' },
+      { image: require('./img/user7.jpeg'), name: 'Eva ' },
+      { image: require('./img/user8.jpeg'), name: 'Chris ' },
+      { image: require('./img/user9.jpeg'), name: 'Olivia ' },
+      { image: require('./img/user10.jpeg'), name: 'Daniel ' },
+      { image: require('./img/user11.jpeg'), name: 'Sophia ' },
+      { image: require('./img/user12.jpeg'), name: 'Michael ' },
+    ].map((item, index) => (
+      <TouchableOpacity key={index} onPress={() => navigation.navigate('Update')}>
+        {/* Replace FontAwesome5 with Image */}
+        <View style={{ alignItems: 'center', marginRight: 30 }}>
+          <Image
+            source={item.image}
+            style={storyStyle.userBoxImageRecent}
+          />
+          <Text style={ storyStyle.userBoxImageRecentNames }>{item.name}</Text>
+        </View>
+      </TouchableOpacity>
+    ))}
+  </ScrollView>
+</View>
+
+
 
      
         <Text style={storyStyle.recentUpdates}>Recents Updates</Text>
 
         {/* Render Call Entries */}
-        {[...Array(15)].map((_, index) => (
-      <StoryEntry
-        key={`StoryEntry_${index}`}
-        name="John Doe"
-        navigation={navigation} // Pass the navigation object down to StoryEntry
-        onPress={() => navigation.navigate('UserProfile')
-        }
-      />
-    ))}
+        {users
+  .filter((user) => (searchQuery ? user.name.toLowerCase().includes(searchQuery.toLowerCase()) : true))
+  .map((user, index) => (
+    <StoryEntry
+      key={`StoryEntry_${index}`}
+      name={user.name}
+      onPress={() => navigation.navigate('Update')}
+      imageSource={user.imageSource}
+    />
+  ))}
+
+    
 
     <Text style={storyStyle.text2}>Muted Status</Text>
 
 
  {/* Box containing 5 user icons */}
- <View style={storyStyle.muted}>
-        {[1, 2, 3, 4, 5].map((index) => (
-          <TouchableOpacity key={index} onPress={() => navigation.navigate('UserProfile')}>
-          <FontAwesome5 name="user-circle" size={40} color="#8B4513" style={storyStyle.mutedIcon} />
-          </TouchableOpacity>
-        ))}
-      </View>
+ <View style={storyStyle.userBox}>
+  <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+    {[
+      { image: require('./img/user3.jpeg'), name: 'John ' },
+      { image: require('./img/user4.jpeg'), name: 'Jane ' },
+      { image: require('./img/user5.jpeg'), name: 'Alice ' },
+      { image: require('./img/user6.jpeg'), name: 'Bob ' },
+      { image: require('./img/user7.jpeg'), name: 'Eva ' },
+      { image: require('./img/user8.jpeg'), name: 'Chris ' },
+      { image: require('./img/user9.jpeg'), name: 'Olivia ' },
+      { image: require('./img/user10.jpeg'), name: 'Daniel ' },
+      { image: require('./img/user11.jpeg'), name: 'Sophia ' },
+      { image: require('./img/user12.jpeg'), name: 'Michael ' },
+    ].map((item, index) => (
+      <TouchableOpacity key={index} onPress={() => navigation.navigate('Update')}>
+        {/* Replace FontAwesome5 with Image */}
+        <View style={{ alignItems: 'center', marginRight: 30 }}>
+          <Image
+            source={item.image}
+            style={storyStyle.userBoxImageMuted}
+          />
+          <Text style={ storyStyle.userBoxImageMutedNames }>{item.name}</Text>
+        </View>
+      </TouchableOpacity>
+    ))}
+  </ScrollView>
+</View>
 
       </ScrollView>
 
