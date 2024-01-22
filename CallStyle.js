@@ -61,14 +61,6 @@ const callStyle = StyleSheet.create({
     backgroundColor: '#8B4513', // SaddleBrown color with 42% opacity
     marginHorizontal: 16,
   },
-  bottomIconsContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    padding: 16,
-    borderTopWidth: 1,
-    borderColor: 'gray', // Change the color as needed
-  },
   userName: {
     fontSize: 18,
     fontWeight: 'bold',

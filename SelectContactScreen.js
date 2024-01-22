@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, FlatList } from 'react-native';
 import SelectContactStyle from './SelectContactStyle';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 const SelectContactScreen = ({ route, navigation }) => {
-    const { contacts } = route.params;
-    const [selectedContacts, setSelectedContacts] = useState([]);
+    const { contacts, selectedContacts: parentSelectedContacts, onSelectContacts } = route.params;
+    const [selectedContacts, setSelectedContacts] = useState(parentSelectedContacts || []);
 
+    useEffect(() => {
+        setSelectedContacts(parentSelectedContacts || []);
+    }, [parentSelectedContacts]);
 
     const sortedContacts = contacts.slice().sort((a, b) => {
         const nameA = a.name ? a.name.toLowerCase() : '';
@@ -15,7 +18,7 @@ const SelectContactScreen = ({ route, navigation }) => {
     });
 
     const handleContactSelect = (selectedContact) => {
-        setSelectedContacts((prevSelectedContacts) => {
+        setSelectedContacts((prevSelectedContacts = []) => {
             const isSelected = prevSelectedContacts.includes(selectedContact);
             if (isSelected) {
                 return prevSelectedContacts.filter((contact) => contact !== selectedContact);
@@ -25,13 +28,17 @@ const SelectContactScreen = ({ route, navigation }) => {
         });
     };
 
-
-
     const handleCancel = () => {
-        navigation.goBack(); // Navigate back to UsersOptions
+        if (onSelectContacts) {
+            onSelectContacts(selectedContacts);
+        }
+        navigation.goBack();
     };
 
     const handleSubmit = () => {
+        if (onSelectContacts) {
+            onSelectContacts(selectedContacts);
+        }
         navigation.goBack();
     };
 
@@ -69,11 +76,10 @@ const SelectContactScreen = ({ route, navigation }) => {
                     <FontAwesome5 name="times" size={24} color="#007AFF" />
                 </TouchableOpacity>
                 <Text style={SelectContactStyle.title}>Add To Favorite(s):</Text>
-                {/* Add an empty view to maintain spacing on the right */}
                 <View />
             </View>
             <FlatList
-                data={sortedContacts} // Use the sortedContacts array
+                data={sortedContacts}
                 keyExtractor={(item) => item.id}
                 renderItem={renderContactItem}
             />
@@ -83,7 +89,6 @@ const SelectContactScreen = ({ route, navigation }) => {
             >
                 <Text style={SelectContactStyle.submitButtonText}>Submit</Text>
             </TouchableOpacity>
-
         </View>
     );
 };
