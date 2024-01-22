@@ -17,6 +17,7 @@ import SelectContactScreen from './SelectContactScreen';
 import MyContactScreen from './MyContactScreen';
 
 
+
 class HomeScreen extends React.Component {
   componentDidMount() {
     // Delayed navigation to ChatScreen after 5 seconds

@@ -70,6 +70,65 @@ const SelectContactStyle = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
+  selectedContactsContainer: {
+    padding: 10,
+    backgroundColor: '#EFEFEF', // Background color
+    borderBottomColor: '#CCC', // Border color
+    borderRadius: 10,
+    marginTop: 10, // Add margin at the top for spacing
+  },
+  selectedContactsScrollView: {
+    flexDirection: 'row',
+    paddingVertical: 10,
+  },
+  selectedContactItem: {
+    flexDirection: 'column', // Changed to column
+    alignItems: 'center',
+    marginHorizontal: 5,
+  },
+  selectedContactWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center', // Align items at the center vertically
+  },
+  removeIcon: {
+    backgroundColor: '#FF5757',
+    borderRadius: 20,
+    position: 'absolute',
+    top: -5,
+    left: 35,
+    width: 24,
+    height: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 5,
+    marginLeft: 5, // Adjust the margin to move the icon to the right
+    zIndex: 2,
+  },
+  selectedContactName: {
+    marginTop: 5, // Added marginTop to separate the icon and name
+    fontSize: 14,
+    marginRight: 20, // Adjust the margin as needed
+  },
+  selectedContactIcon: {
+    marginRight: 20, // Adjust the margin as needed
+  },
+  searchContainer: {
+    padding: 10,
+    backgroundColor: '#EFEFEF',
+    marginBottom: 10, // Add margin at the bottom for spacing
+    borderRadius: 10,
+  },
+  searchIcon: {
+    position: 'absolute',
+    top: 20,
+    left: 10,
+  },  
+  searchInput: {
+    marginLeft: 20,
+    height: 40,
+    borderRadius: 5,
+    paddingHorizontal: 10,
+  },
 });
 
 export default SelectContactStyle;
