@@ -110,12 +110,20 @@ searchQuery ? user.name.toLowerCase().includes(searchQuery.toLowerCase()) : true
   const handleTextIconClick = () => {
     navigation.navigate('Text'); // Use the name you assigned to the screen
   };
+  
+  const handleUsersIconPress = () => {
+    // Navigate to a new screen where users can choose between add to favorites and view all contacts
+    navigation.navigate('UsersOptions');
+  };
+
 
 
   return (
     <View style={storyStyle.container}>
       <View style={storyStyle.header}>
-        <FontAwesome5 name="users" size={24} color="#8B4513" style={storyStyle.icon} />
+      <TouchableOpacity onPress={handleUsersIconPress} style={storyStyle.touchable}>
+          <FontAwesome5 name="users" size={24} color="#8B4513" style={storyStyle.icon} />
+        </TouchableOpacity>
         <Text style={storyStyle.title}>Story</Text>
         <TouchableOpacity onPress={handleSearchPress} style={storyStyle.touchable}>
           <FontAwesome5 name="search" size={24} color="#8B4513" style={storyStyle.icon} />
@@ -155,7 +163,7 @@ searchQuery ? user.name.toLowerCase().includes(searchQuery.toLowerCase()) : true
       </TouchableOpacity>
       <View style={storyStyle.userInfo}>
         <Text style={storyStyle.userName}>John Doe</Text>
-        <Text style={storyStyle.date}>Today</Text>
+        <Text style={storyStyle.date}>10 minutes ago</Text>
       </View>
       <View style={storyStyle.actions}>
         <TouchableOpacity onPress={handleCameraIconClick}>

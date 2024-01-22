@@ -12,13 +12,16 @@ import SettingScreen from './SettingScreen'; // Import the CallScreen component
 import TextInputScreen from './TextInputScreen'; // Import the new screen component
 import UpdateScreen from './UpdateScreen';
 import ConversationScreen from './CoversationScreen';
+import UsersOptionsScreen from './UsersOptionsScreen';
+import SelectContactScreen from './SelectContactScreen';
+import MyContactScreen from './MyContactScreen';
 
 
 class HomeScreen extends React.Component {
   componentDidMount() {
     // Delayed navigation to ChatScreen after 5 seconds
     this.delayedNavigation = setTimeout(() => {
-      this.props.navigation.navigate('Chat');
+      this.props.navigation.navigate('Story');
     }, 1000);
   }
 
@@ -119,6 +122,33 @@ export default function App() {
         <Stack.Screen
           name="Conversation"
           component={ConversationScreen} // Ensure you are using the correct component reference
+          options={{
+            title: null,
+            headerLeft: null, // Hide the back button
+            headerTransparent: true, // Remove the line at the top
+          }}
+        />
+        <Stack.Screen
+          name="UsersOptions"
+          component={UsersOptionsScreen} // Ensure you are using the correct component reference
+          options={{
+            title: null,
+            headerLeft: null, // Hide the back button
+            headerTransparent: true, // Remove the line at the top
+          }}
+        />
+        <Stack.Screen
+          name="SelectContact"
+          component={SelectContactScreen} // Ensure you are using the correct component reference
+          options={{
+            title: null,
+            headerLeft: null, // Hide the back button
+            headerTransparent: true, // Remove the line at the top
+          }}
+        />
+        <Stack.Screen
+          name="Mycontact"
+          component={MyContactScreen} // Ensure you are using the correct component reference
           options={{
             title: null,
             headerLeft: null, // Hide the back button
