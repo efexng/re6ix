@@ -21,8 +21,6 @@ const UpdateScreen = ({ route }) => {
   const [posts, setPosts] = useState([]);
   const [replyText, setReplyText] = useState('');
   const [currentPostIndex, setCurrentPostIndex] = useState(0);
-  const [timerWidth, setTimerWidth] = useState('100%');
-
 
   useEffect(() => {
     loadPosts();
@@ -215,8 +213,8 @@ const UpdateScreen = ({ route }) => {
             />
           </View>
           <TouchableOpacity onPress={handleSendPress} disabled={replyText.trim() === ''}>
-            <Icon
-              name="send"
+            <FontAwesome5
+              name="paper-plane"
               size={25}
               color={replyText.trim() === '' ? 'gray' : 'blue'}
               style={UpdateStyle.sendIcon}
