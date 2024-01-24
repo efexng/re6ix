@@ -33,6 +33,7 @@ const SelectContactStyle = StyleSheet.create({
   contactName: {
     fontSize: 18,
     fontWeight: 'bold',
+    marginLeft: 50, // Add some left margin to the contact name
   },
   phoneNumberContainer: {
     flexDirection: 'row',
@@ -42,6 +43,7 @@ const SelectContactStyle = StyleSheet.create({
   phoneNumber: {
     fontSize: 14,
     color: '#555',
+    marginLeft: 50, // Add some left margin to the contact name
   },
   radioContainer: {
     width: 24,
@@ -51,6 +53,14 @@ const SelectContactStyle = StyleSheet.create({
     borderColor: '#007AFF',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  phonecontacticon : {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    borderWidth: 2,
+    borderColor: '#007AFF',
+    position: 'absolute',
   },
   radioChecked: {
     width: 12,
@@ -111,6 +121,11 @@ const SelectContactStyle = StyleSheet.create({
   },
   selectedContactIcon: {
     marginRight: 20, // Adjust the margin as needed
+    borderRadius: 30,
+    borderWidth: 2,
+    borderColor: '#007AFF',
+    width: 60,
+    height: 60,
   },
   searchContainer: {
     padding: 10,
@@ -129,6 +144,15 @@ const SelectContactStyle = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
   },
+  selectedCountText: {
+    position: 'absolute',
+    top: '210%',  // Adjust based on your preference
+    left: '50%', // Adjust based on your preference
+    transform: [{ translateX: -50 }, { translateY: -50 }],
+    textAlign: 'center',
+    fontSize: 15,
+    color: '#007AFF',
+  },  
 });
 
 export default SelectContactStyle;

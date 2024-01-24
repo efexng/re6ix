@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, Image, TextInput, Keyboard } from 'react-native';
 import storyStyle from './StoryStyle';
 import { FontAwesome5 } from '@expo/vector-icons';
@@ -30,12 +30,22 @@ const StoryScreen = () => {
   const navigation = useNavigation();
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const searchInputRef = useRef(null);
 
+
+
+  useEffect(() => {
+    // Focus on the TextInput when it's mounted
+    if (isSearchVisible && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [isSearchVisible]);
 
   const handleSearchPress = () => {
     setIsSearchVisible(!isSearchVisible);
   };
 
+  
   const handleCancelSearch = () => {
     setIsSearchVisible(false);
     setSearchQuery('');
@@ -133,6 +143,7 @@ searchQuery ? user.name.toLowerCase().includes(searchQuery.toLowerCase()) : true
         <View style={storyStyle.searchBox}>
           <FontAwesome5 name="search" size={24} color="#8B4513" style={storyStyle.searchicon} />
           <TextInput
+            ref={searchInputRef}
             placeholder="Search..."
             style={storyStyle.searchInput}
             value={searchQuery}
@@ -150,6 +161,8 @@ searchQuery ? user.name.toLowerCase().includes(searchQuery.toLowerCase()) : true
     contentContainerStyle={storyStyle.scrollContentContainer}
     showsVerticalScrollIndicator={false}
     onScroll={() => Keyboard.dismiss()} 
+    scrollEventThrottle={16}  // You can adjust this value based on your needs
+
 
   >
        {/* User details */}

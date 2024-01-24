@@ -3,6 +3,8 @@ import { View, TextInput, TouchableOpacity, Text, ScrollView, StyleSheet, Keyboa
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import TextInputStyle from './TextInputStyle';
+import AsyncStorage from '@react-native-async-storage/async-storage'; // Import AsyncStorage
+
 
 const TextInputScreen = () => {
   const navigation = useNavigation();
@@ -42,22 +44,43 @@ const TextInputScreen = () => {
       }, 5000);
     }
   };
+  
+  const addPost = async (newPost) => {
+    try {
+      const storedPosts = await AsyncStorage.getItem('posts');
+      const currentPosts = storedPosts ? JSON.parse(storedPosts) : [];
+      const updatedPosts = [...currentPosts, newPost];
+      await AsyncStorage.setItem('posts', JSON.stringify(updatedPosts));
+      console.log('Post added successfully:', newPost);
+    } catch (error) {
+      console.error('Error adding post to AsyncStorage:', error);
+    }
+  };
+  
 
   const handleSendAction = () => {
     const fontSize = calculateFontSize();
-
+  
     const postObject = {
       text: textInputValue,
       backgroundColor: colors[currentColorIndex],
       font: fonts[currentFontIndex],
       fontSize: fontSize,
-      style: { fontSize: fontSize }, // Include fontSize in style
-
+      style: { fontSize: fontSize },
     };
-    
+  
+    console.log('Sending post:', postObject);
+  
+    addPost(postObject);
+  
+    // Reset the textInputValue to allow for new posts
+    setTextInputValue('');
 
-    navigation.navigate('Update', { post: postObject });
+    navigation.goBack();
+
   };
+  
+  
 
    const calculateFontSize = () => {
     const baseFontSize = 40;
