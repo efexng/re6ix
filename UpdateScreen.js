@@ -21,6 +21,8 @@ const UpdateScreen = ({ route }) => {
   const [posts, setPosts] = useState([]);
   const [replyText, setReplyText] = useState('');
   const [currentPostIndex, setCurrentPostIndex] = useState(0);
+  const [timerWidth, setTimerWidth] = useState('100%');
+
 
   useEffect(() => {
     loadPosts();
@@ -67,26 +69,20 @@ const UpdateScreen = ({ route }) => {
     }
   };
 
-const loadPosts = async () => {
-  try {
-    const storedPosts = await AsyncStorage.getItem('posts');
-    if (storedPosts) {
-      const loadedPosts = JSON.parse(storedPosts);
+  const loadPosts = async () => {
+    try {
+      const storedPosts = await AsyncStorage.getItem('posts');
+      if (storedPosts) {
+        const loadedPosts = JSON.parse(storedPosts);
 
-      // Sort posts based on timestamp in descending order
-      const sortedPosts = loadedPosts.sort((a, b) => b.timestamp - a.timestamp);
-
-      // Reverse the order before setting the state
-      setPosts(sortedPosts.reverse());
+        if (JSON.stringify(loadedPosts) !== JSON.stringify(posts)) {
+          setPosts(loadedPosts);
+        }
+      }
+    } catch (error) {
+      console.error('Error loading posts from AsyncStorage:', error);
     }
-  } catch (error) {
-    console.error('Error loading posts from AsyncStorage:', error);
-  }
-};
-
-useEffect(() => {
-  loadPosts();
-}, []);
+  };
 
   const addPost = async (newPost) => {
     setPosts((prevPosts) => {
@@ -121,35 +117,54 @@ useEffect(() => {
     }
   };
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (currentPostIndex < posts.length - 1) {
+        setCurrentPostIndex((prevIndex) => prevIndex + 1);
+      } else {
+        navigation.goBack();
+      }
+    }, 3000);
+
+    return () => {
+      // Clear the timer if the component unmounts or the post changes
+      clearTimeout(timer);
+    };
+  }, [currentPostIndex, posts, navigation]);
+
+
   const handlePostPress = (event) => {
     const screenWidth = Dimensions.get('window').width;
-  
-    // Calculate the middle point of the screen
-    const middleX = screenWidth / 2;
+    const leftWidth = screenWidth / 3; // 1/3 of the screen for left tap
+    const rightWidth = screenWidth - leftWidth; // 2/3 of the screen for right tap
   
     // Check if the tap occurred on the left or right side of the screen
-    if (event.nativeEvent.locationX < middleX) {
-      // Left tap: Go to the previous post
-      setCurrentPostIndex((prevIndex) => {
-        // If it's the first post, navigate back
-        if (prevIndex === 0) {
-          navigation.goBack();
-        }
-        // Otherwise, go to the previous post
-        return (prevIndex - 1 + posts.length) % posts.length;
-      });
-    } else {
-      // Right tap: Go to the next post
-      setCurrentPostIndex((prevIndex) => {
-        // If it's the last post, navigate back
-        if (prevIndex === posts.length - 1) {
-          navigation.goBack();
-        }
-        // Otherwise, go to the next post
-        return (prevIndex + 1) % posts.length;
-      });
+    if (event.nativeEvent.locationX < leftWidth) {
+      // Left tap: Go to the previous post or navigate back if on the first post
+      if (currentPostIndex === 0) {
+        navigation.goBack();
+      } else {
+        setCurrentPostIndex((prevIndex) => (prevIndex - 1 + posts.length) % posts.length);
+      }
+    } else if (event.nativeEvent.locationX > rightWidth) {
+      // Right tap: Go to the next post or navigate back if it's the last post
+      if (currentPostIndex === posts.length - 1) {
+        navigation.goBack();
+      } else {
+        setCurrentPostIndex((prevIndex) => (prevIndex + 1) % posts.length);
+  
+        // Set a timeout to move to the next post after 3 seconds
+        setTimeout(() => {
+          if (currentPostIndex < posts.length - 1) {
+            setCurrentPostIndex((prevIndex) => (prevIndex + 1) % posts.length);
+          } else {
+            navigation.goBack();
+          }
+        }, 3000);
+      }
     }
   };
+  
   
 
   const handleLeftTap = () => {
